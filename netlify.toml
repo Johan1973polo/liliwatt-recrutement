@@ -1,0 +1,11 @@
+# Configuration Netlify pour ECOGIES Recrutement
+
+[build]
+  publish = "."
+
+# Configuration des notifications par email (à configurer dans l'interface Netlify)
+# Après déploiement :
+# 1. Allez dans Site Settings > Forms > Form notifications
+# 2. Cliquez sur "Add notification" > "Email notification"
+# 3. Configurez l'email vers : bo@ecogies.fr
+# 4. Sélectionnez le formulaire "candidature-ecogies"

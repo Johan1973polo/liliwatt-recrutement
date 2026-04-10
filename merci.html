@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci - ECOGIES</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-blue: #0d3b66;
+            --secondary-teal: #06a77d;
+            --accent-green: #0f9b8e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #165a8c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .thank-you-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 60px 30px;
+        }
+
+        .check-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .check-icon i {
+            font-size: 4rem;
+            color: var(--secondary-teal);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: white;
+            color: var(--primary-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+
+        .btn-home:hover {
+            background: var(--secondary-teal);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border-left: 4px solid var(--secondary-teal);
+            animation: fadeInUp 0.6s ease-out 0.8s both;
+        }
+
+        .info-box i {
+            color: var(--secondary-teal);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="check-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <h1>Merci pour votre envoi !</h1>
+
+        <p>
+            Vos documents ont bien été reçus par notre équipe ECOGIES.
+        </p>
+
+        <p>
+            Nous allons examiner votre candidature et vos documents attentivement.<br>
+            Un membre de notre équipe vous contactera très prochainement pour la suite du processus.
+        </p>
+
+        <div class="info-box">
+            <i class="bi bi-envelope-check-fill"></i>
+            <strong>Confirmation envoyée</strong><br>
+            Vous devriez recevoir un email de confirmation à l'adresse indiquée.
+        </div>
+
+        <a href="index.html" class="btn-home">
+            <i class="bi bi-house-fill me-2"></i>Retour à l'accueil
+        </a>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

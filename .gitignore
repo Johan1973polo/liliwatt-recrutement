@@ -1,0 +1,10 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers Netlify locaux
+.netlify/
+
+# Fichiers de backup
+*.bak
+*~
