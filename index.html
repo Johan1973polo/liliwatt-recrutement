@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LILIWATT - Devenez apporteur d'affaires en courtage énergie</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-dark: #1e1b4b;
+            --primary-violet: #7c3aed;
+            --accent-fuchsia: #d946ef;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #7c3aed 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand img {
+            max-height: 50px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #fff !important;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        /* Badge recrutement */
+        .recruitment-badge {
+            background: linear-gradient(90deg, var(--primary-violet), var(--accent-fuchsia));
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #7c3aed 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 L1200,0 L1200,60 Q600,120 0,60 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .trust-banner {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .trust-banner i {
+            color: var(--primary-violet);
+            margin: 0 10px;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: var(--primary-violet);
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(6,167,125,0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--accent-fuchsia);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6,167,125,0.4);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-violet);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .bg-light-custom {
+            background: var(--light-bg);
+        }
+
+        /* Cards */
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary-violet);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-violet);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Process Timeline */
+        .process-step {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-violet);
+        }
+
+        .process-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-violet), var(--accent-fuchsia));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(6,167,125,0.3);
+        }
+
+        .process-step h4 {
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* CTA Blocks */
+        .cta-block {
+            background: linear-gradient(135deg, var(--primary-dark), #7c3aed);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(13,59,102,0.3);
+            margin: 20px 0;
+        }
+
+        .cta-block h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .cta-block-light {
+            background: linear-gradient(135deg, var(--primary-violet), var(--accent-fuchsia));
+        }
+
+        /* Forms */
+        .form-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-violet);
+            box-shadow: 0 0 0 0.2rem rgba(6,167,125,0.15);
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        /* Checkboxes de disponibilité */
+        .dispo-checkbox {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dispo-checkbox:hover {
+            border-color: var(--primary-violet);
+            background: #f0f8f6;
+        }
+
+        .dispo-checkbox input:checked ~ label {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .dispo-checkbox:has(input:checked) {
+            background: #e8f5f1;
+            border-color: var(--primary-violet);
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-violet);
+            border-color: var(--primary-violet);
+        }
+
+        .form-check-input:focus {
+            border-color: var(--primary-violet);
+            box-shadow: 0 0 0 0.25rem rgba(6,167,125,0.25);
+        }
+
+        /* FAQ */
+        .accordion-button {
+            background: var(--light-bg);
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 10px !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            border-color: var(--primary-violet);
+            box-shadow: 0 0 0 0.25rem rgba(6,167,125,0.15);
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 10px !important;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .accordion-body {
+            background: white;
+            padding: 25px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Team Photo Section */
+        .team-photo-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .team-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .team-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(13,59,102,0.95), transparent);
+            padding: 40px 30px 30px;
+            color: white;
+        }
+
+        .team-overlay h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .team-overlay p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-block, .form-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Badge Recrutement -->
+    <div class="recruitment-badge">
+        <i class="bi bi-megaphone-fill"></i> RECRUTEMENT EN COURS
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span style="font-size:28px;font-weight:800;color:#fff;letter-spacing:4px;">LILIWATT</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    style="background: rgba(255,255,255,0.2); border: none;">
+                <span class="navbar-toggler-icon" style="filter: brightness(0) invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#remuneration">Rémunération</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#independant">Indépendant</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#form-candidature" style="background: var(--primary-violet); border-radius: 5px; padding: 0.5rem 1.2rem !important;">
+                        <i class="bi bi-upload me-1"></i>Déposer
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Rejoignez LILIWATT — Devenez apporteur d'affaires indépendant en courtage d'énergie B2B & B2C</h1>
+            <p class="hero-subtitle">
+                Devenez téléprospecteur indépendant, formez-vous à un vrai métier,<br>
+                montez en compétences et développez votre activité avec nous.
+            </p>
+            <div class="text-center mt-4">
+                <a href="#form-candidature" class="btn btn-primary-custom btn-lg" style="padding: 18px 50px; font-size: 1.2rem;">
+                    <i class="bi bi-cloud-upload-fill me-2"></i>Déposer mes documents
+                </a>
+            </div>
+            <div class="trust-banner">
+                <i class="bi bi-graph-up-arrow"></i> Entreprise en croissance
+                <i class="bi bi-people-fill"></i> Plusieurs dizaines de collaborateurs
+                <i class="bi bi-mortarboard-fill"></i> Formation & accompagnement
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title">LILIWATT, cabinet de courtage en énergie</h2>
+                    <p class="mt-4" style="font-size: 1.1rem; line-height: 1.8;">
+                        LILIWATT accompagne les professionnels (commerçants, artisans, entreprises) dans l'optimisation
+                        de leurs contrats d'électricité et de gaz.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Nous sommes une structure en croissance, composée de plusieurs dizaines de collaborateurs,
+                        avec une culture simple : la performance, la clarté et l'accompagnement.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        <strong>Ici, on ne recrute pas 'juste' des télépros : on forme des professionnels.</strong>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="video-container">
+                        <video controls poster="">
+                            <source src="video de presentation .mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Photo Section -->
+    <section class="py-5 bg-light-custom team-photo-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Bienvenue chez LILIWATT</h2>
+                <p class="section-intro mt-4">
+                    Une équipe dynamique, soudée et en pleine croissance
+                </p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="team-image-container">
+                        <img src="photo equipe.png" alt="L'équipe LILIWATT" class="img-fluid">
+                        <div class="team-overlay">
+                            <h3><i class="bi bi-people-fill me-2"></i>Notre équipe</h3>
+                            <p>Des professionnels passionnés, unis par la volonté de performer et de grandir ensemble.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <i class="bi bi-award-fill" style="font-size: 3rem; color: var(--primary-violet); margin-bottom: 15px;"></i>
+                        <h4 style="color: var(--primary-dark); font-weight: 600;">Excellence</h4>
+                        <p>Un engagement constant vers la qualité et la performance</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <i class="bi bi-heart-fill" style="font-size: 3rem; color: var(--primary-violet); margin-bottom: 15px;"></i>
+                        <h4 style="color: var(--primary-dark); font-weight: 600;">Esprit d'équipe</h4>
+                        <p>Une culture de collaboration et d'entraide au quotidien</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <i class="bi bi-graph-up-arrow" style="font-size: 3rem; color: var(--primary-violet); margin-bottom: 15px;"></i>
+                        <h4 style="color: var(--primary-dark); font-weight: 600;">Croissance</h4>
+                        <p>Une entreprise en expansion qui recrute ses talents de demain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Votre mission</h2>
+                <p class="section-intro mt-4">
+                    Votre rôle est simple dans sa définition, mais exigeant dans son exécution.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-telephone-fill"></i>
+                        <h4>Contacter</h4>
+                        <p>Contacter des professionnels par téléphone</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <h4>Présenter</h4>
+                        <p>Présenter notre démarche de courtage en énergie</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-file-earmark-text-fill"></i>
+                        <h4>Convaincre</h4>
+                        <p>Convaincre les interlocuteurs de nous transmettre leurs factures d'énergie</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-clipboard-check-fill"></i>
+                        <h4>Qualifier</h4>
+                        <p>Qualifier les informations pour permettre une étude personnalisée</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <div class="alert alert-info d-inline-block" style="background: white; border-left: 4px solid var(--primary-violet); border-radius: 10px; padding: 20px 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <h5 style="color: var(--primary-dark); margin-bottom: 10px;">
+                        <i class="bi bi-lightbulb-fill me-2"></i>À retenir
+                    </h5>
+                    <p class="mb-0" style="font-size: 1.1rem;">
+                        Vous ne vendez pas un contrat : vous ouvrez la porte à une optimisation qui peut faire économiser beaucoup d'argent aux entreprises.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Un vrai métier Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Un vrai métier. Une vraie école.</h2>
+                <p class="section-intro mt-4">
+                    La téléprospection n'est pas un job 'facile'. Chez LILIWATT, c'est un métier à part entière.
+                </p>
+                <p style="font-size: 1.1rem; max-width: 900px; margin: 0 auto;">
+                    Nous travaillons avec une méthode structurée, des scripts éprouvés et une formation continue.
+                    Que vous soyez débutant motivé ou expérimenté, vous êtes accompagné pour monter en compétence rapidement.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-book-fill"></i>
+                        <h4>Formation & scripts</h4>
+                        <p>Méthode structurée et scripts éprouvés pour maximiser vos performances</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-headset"></i>
+                        <h4>Coaching et suivi</h4>
+                        <p>Accompagnement personnalisé pour progresser au quotidien</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-bullseye"></i>
+                        <h4>Objectifs clairs</h4>
+                        <p>Des indicateurs précis pour mesurer votre évolution</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-trophy-fill"></i>
+                        <h4>Progression rapide</h4>
+                        <p>Montée en compétences accélérée grâce à notre méthode</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indépendant Section -->
+    <section id="independant" class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Un cadre indépendant, depuis chez vous</h2>
+                <p class="section-intro mt-4">
+                    Vous travaillez à domicile, en tant que travailleur indépendant.
+                </p>
+                <p style="font-size: 1.1rem; max-width: 900px; margin: 0 auto;">
+                    Vous gardez votre autonomie, tout en bénéficiant d'un cadre, d'outils et d'un accompagnement.<br>
+                    <strong>Vous travaillez depuis chez vous, mais vous ne travaillez jamais seul.</strong>
+                </p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-house-fill"></i>
+                        <h4>100% à distance</h4>
+                        <p>Travaillez confortablement depuis votre domicile</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-tools"></i>
+                        <h4>Outils et process fournis</h4>
+                        <p>Tous les outils nécessaires mis à disposition</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-calendar-check-fill"></i>
+                        <h4>Organisation flexible</h4>
+                        <p>Gérez votre emploi du temps en autonomie</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-chat-square-text-fill"></i>
+                        <h4>Communication d'équipe</h4>
+                        <p>Intégration dans une équipe dynamique et solidaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rémunération Section -->
+    <section id="remuneration" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Rémunération</h2>
+                <p class="section-intro mt-4">
+                    Chez LILIWATT, en tant qu'indépendant, vous percevez des commissions attractives basées sur vos performances.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-briefcase-fill"></i>
+                        <h4>Statut indépendant</h4>
+                        <p>Travaillez en tant qu'indépendant avec votre propre structure</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-cash-stack"></i>
+                        <h4>Salaire moyen 4500€</h4>
+                        <p>Moyenne des commissions de nos collaborateurs performants</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-eye-fill"></i>
+                        <h4>Transparence</h4>
+                        <p>Des règles claires et transparentes sur les commissions</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card text-center">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                        <h4>Évolution</h4>
+                        <p>Possibilités d'évolution pour les profils réguliers et sérieux</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <div class="alert alert-success d-inline-block" style="background: linear-gradient(135deg, var(--primary-violet), var(--accent-fuchsia)); color: white; border: none; border-radius: 15px; padding: 25px 50px; box-shadow: 0 5px 20px rgba(6,167,125,0.3);">
+                    <h5 class="mb-2"><i class="bi bi-handshake-fill me-2"></i>Notre objectif</h5>
+                    <p class="mb-0" style="font-size: 1.1rem;">
+                        Construire une collaboration durable avec des indépendants engagés
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Le processus, étape par étape</h2>
+                <p class="section-intro mt-4">
+                    Tout est simple, structuré et rapide :
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <h4>Candidature</h4>
+                        <p>Vous remplissez le formulaire en ligne en quelques minutes.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <h4>Échange</h4>
+                        <p>Un membre de l'équipe vous contacte pour valider votre profil et répondre à vos questions.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h4>Intégration</h4>
+                        <p>Vous déposez vos documents et nous préparons votre contrat de collaboration.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <h4>Formation</h4>
+                        <p>Vous recevez les supports, scripts et consignes de démarrage pour être opérationnel.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">5</div>
+                        <h4>Démarrage</h4>
+                        <p>Vous commencez la mission et vous êtes accompagné au quotidien par l'équipe.</p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <div class="alert alert-info" style="background: white; border-left: 4px solid var(--primary-dark); border-radius: 10px; padding: 20px;">
+                            <p class="mb-0"><i class="bi bi-info-circle-fill me-2"></i>
+                                Cette page sert aussi de landing d'intégration : dépôt de documents et préparation contractuelle.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="cta-block text-center">
+                        <i class="bi bi-folder-check" style="font-size: 3.5rem; margin-bottom: 25px;"></i>
+                        <h3 style="font-size: 2.5rem;">Prêt(e) à rejoindre l'équipe ?</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 35px;">
+                            Si vous êtes motivé, persévérant et prêt à apprendre, LILIWATT peut devenir une vraie opportunité.<br>
+                            Déposez vos documents pour finaliser votre intégration et préparer votre contrat.
+                        </p>
+                        <a href="#form-candidature" class="btn btn-primary-custom btn-lg">
+                            <i class="bi bi-cloud-upload-fill me-2"></i>Déposer mes documents maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Questions fréquentes</h2>
+                <p class="section-intro mt-4">Trouvez les réponses à vos questions</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="bi bi-house-fill me-2"></i> Est-ce vraiment 100% à domicile ?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Oui, absolument ! Vous travaillez depuis chez vous, avec votre propre équipement (ordinateur, téléphone, connexion internet). Aucun déplacement n'est nécessaire. Toute la communication avec l'équipe se fait en ligne (Slack, visio, etc.).
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="bi bi-mortarboard-fill me-2"></i> Je débute, est-ce possible ?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Oui ! Nous acceptons les débutants motivés. Vous recevez une formation complète avec des scripts, des techniques de prospection et un coaching personnalisé. L'essentiel est d'être motivé, persévérant et prêt à apprendre. L'expérience se construit rapidement avec notre accompagnement.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="bi bi-briefcase-fill me-2"></i> Je suis indépendant : comment ça se passe ?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Vous travaillez sous le statut d'indépendant (micro-entreprise, auto-entrepreneur, etc.). Vous devez donc avoir votre propre structure ou être prêt à la créer. Nous signons un contrat de prestation de service. Vous gardez votre autonomie tout en bénéficiant d'un cadre structuré, d'outils et d'un accompagnement quotidien.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="bi bi-file-earmark-text-fill me-2"></i> À quoi sert la collecte de factures ?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    En tant que courtier en énergie, LILIWATT analyse les factures d'électricité et de gaz des entreprises pour identifier des économies potentielles. Votre rôle est de convaincre les professionnels de partager leurs factures pour bénéficier d'une étude gratuite. Vous ne vendez rien : vous ouvrez simplement la porte à une optimisation qui peut leur faire économiser des milliers d'euros.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <i class="bi bi-cash-stack me-2"></i> Comment suis-je rémunéré ?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    En tant qu'indépendant, vous percevez des commissions basées sur vos performances (nombre de factures collectées, qualifiées et transformées). Vous êtes rémunéré tous les mois. La moyenne des commissions chez LILIWATT est de 4500€ pour nos collaborateurs performants. Les règles de rémunération sont claires et transparentes. Plus vous êtes performant et régulier, plus vos revenus augmentent. Des possibilités d'évolution existent pour les profils sérieux et engagés.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    <i class="bi bi-calendar-check-fill me-2"></i> Quand puis-je commencer ?
+                                </button>
+                            </h3>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Le processus est rapide ! Une fois votre candidature validée, vous déposez vos documents, nous préparons le contrat, vous recevez la formation et vous pouvez démarrer en quelques jours. Tout dépend de votre réactivité et de la disponibilité de vos documents administratifs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de candidature et dépôt de documents -->
+    <section id="form-candidature" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="form-section">
+                        <div class="text-center mb-4">
+                            <h2 class="section-title">Dépôt de documents</h2>
+                            <p class="mt-3" style="color: #666;">Remplissez le formulaire ci-dessous et déposez vos documents</p>
+                        </div>
+                        <form name="candidature-liliwatt"
+                              method="POST"
+                              data-netlify="true"
+                              data-netlify-honeypot="bot-field"
+                              action="/merci.html"
+                              enctype="multipart/form-data">
+
+                            <!-- Champ caché requis pour Netlify Forms -->
+                            <input type="hidden" name="form-name" value="candidature-liliwatt" />
+
+                            <!-- Honeypot anti-spam (champ caché invisible) -->
+                            <p style="display: none;">
+                                <label>Ne pas remplir : <input name="bot-field" /></label>
+                            </p>
+
+                            <div class="row g-3">
+                                <!-- Informations personnelles -->
+                                <div class="col-12 mb-3">
+                                    <h4 style="color: var(--primary-dark); border-bottom: 2px solid var(--primary-violet); padding-bottom: 10px;">
+                                        <i class="bi bi-person-fill me-2"></i>Vos informations
+                                    </h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nom" class="form-label">Nom *</label>
+                                    <input type="text" class="form-control" id="nom" name="nom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="prenom" class="form-label">Prénom *</label>
+                                    <input type="text" class="form-control" id="prenom" name="prenom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telephone" class="form-label">Téléphone *</label>
+                                    <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ville" class="form-label">Ville *</label>
+                                    <input type="text" class="form-control" id="ville" name="ville" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="experience" class="form-label">Expérience en téléprospection *</label>
+                                    <select class="form-select" id="experience" name="experience" required>
+                                        <option value="">Sélectionnez...</option>
+                                        <option value="aucune">Aucune expérience</option>
+                                        <option value="moins-1an">Moins d'1 an</option>
+                                        <option value="1-3ans">1 à 3 ans</option>
+                                        <option value="plus-3ans">Plus de 3 ans</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="motivations" class="form-label">Motivations *</label>
+                                    <textarea class="form-control" id="motivations" name="motivations" rows="4"
+                                              placeholder="Parlez-nous de votre motivation et de ce qui vous intéresse dans cette opportunité..." required></textarea>
+                                </div>
+
+                                <!-- Disponibilités -->
+                                <div class="col-12 mt-4 mb-3">
+                                    <h4 style="color: var(--primary-dark); border-bottom: 2px solid var(--primary-violet); padding-bottom: 10px;">
+                                        <i class="bi bi-calendar-check me-2"></i>Vos disponibilités *
+                                    </h4>
+                                    <p class="text-muted mt-2" style="font-size: 0.95rem;">
+                                        <i class="bi bi-info-circle me-2"></i>Sélectionnez les jours où vous êtes disponible pour travailler
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row g-3">
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Lundi" id="dispo-lundi">
+                                                <label class="form-check-label" for="dispo-lundi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Lundi
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Mardi" id="dispo-mardi">
+                                                <label class="form-check-label" for="dispo-mardi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Mardi
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Mercredi" id="dispo-mercredi">
+                                                <label class="form-check-label" for="dispo-mercredi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Mercredi
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Jeudi" id="dispo-jeudi">
+                                                <label class="form-check-label" for="dispo-jeudi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Jeudi
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Vendredi" id="dispo-vendredi">
+                                                <label class="form-check-label" for="dispo-vendredi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Vendredi
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="form-check dispo-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Samedi" id="dispo-samedi">
+                                                <label class="form-check-label" for="dispo-samedi" style="cursor: pointer;">
+                                                    <i class="bi bi-calendar-day me-2" style="color: var(--primary-violet);"></i>Samedi
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check mt-3" style="padding: 15px; background: linear-gradient(135deg, var(--primary-violet), var(--accent-fuchsia)); border-radius: 10px;">
+                                        <input class="form-check-input" type="checkbox" name="disponibilite[]" value="Toute la semaine" id="dispo-semaine" style="border-color: white;">
+                                        <label class="form-check-label" for="dispo-semaine" style="font-weight: 600; color: white; cursor: pointer;">
+                                            <i class="bi bi-calendar-week me-2"></i>Toute la semaine (Lundi - Samedi)
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Statut indépendant -->
+                                <div class="col-12 mt-5 mb-3">
+                                    <h4 style="color: var(--primary-dark); border-bottom: 2px solid var(--primary-violet); padding-bottom: 10px;">
+                                        <i class="bi bi-briefcase-fill me-2"></i>Statut d'indépendant
+                                    </h4>
+                                    <p class="text-muted mt-2" style="font-size: 0.95rem;">
+                                        <i class="bi bi-info-circle me-2"></i>Informations sur votre statut professionnel
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Êtes-vous déjà indépendant ou avez-vous un KBIS ? *</label>
+                                    <div class="form-check mb-2" style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                        <input class="form-check-input" type="radio" name="statut-independant" id="statut-oui" value="oui" required>
+                                        <label class="form-check-label" for="statut-oui" style="cursor: pointer;">
+                                            <i class="bi bi-check-circle-fill me-2" style="color: var(--primary-violet);"></i>Oui, j'ai déjà un statut d'indépendant
+                                        </label>
+                                    </div>
+                                    <div class="form-check" style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                                        <input class="form-check-input" type="radio" name="statut-independant" id="statut-non" value="non" required>
+                                        <label class="form-check-label" for="statut-non" style="cursor: pointer;">
+                                            <i class="bi bi-x-circle-fill me-2" style="color: #dc3545;"></i>Non, je n'ai pas encore de statut d'indépendant
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Upload KBIS si déjà indépendant -->
+                                <div class="col-12 mt-3" id="kbis-section" style="display: none;">
+                                    <div style="background: #e8f5f1; padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary-violet);">
+                                        <label for="kbis-document" class="form-label" style="font-weight: 600;">
+                                            <i class="bi bi-file-earmark-text-fill me-2" style="color: var(--primary-violet);"></i>KBIS ou attestation URSSAF *
+                                        </label>
+                                        <input type="file" class="form-control" id="kbis-document" name="kbis-document"
+                                               accept=".pdf,.jpg,.jpeg,.png">
+                                        <small class="text-muted">Merci de joindre votre KBIS, extrait K ou attestation URSSAF</small>
+                                    </div>
+                                </div>
+
+                                <!-- Question conditionnelle : accompagnement -->
+                                <div class="col-12 mt-3" id="accompagnement-section" style="display: none;">
+                                    <div style="background: #fff3cd; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                                        <label class="form-label" style="color: #856404;">
+                                            <i class="bi bi-question-circle-fill me-2"></i>Souhaitez-vous être accompagné par LILIWATT pour la création de votre statut d'indépendant ?
+                                        </label>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="accompagnement" id="accompagnement-oui" value="oui">
+                                            <label class="form-check-label" for="accompagnement-oui" style="cursor: pointer;">
+                                                Oui, je souhaite être accompagné
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="accompagnement" id="accompagnement-non" value="non">
+                                            <label class="form-check-label" for="accompagnement-non" style="cursor: pointer;">
+                                                Non, je m'en occupe moi-même
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mandat pour accompagnement -->
+                                <div class="col-12 mt-3" id="mandat-section" style="display: none;">
+                                    <div style="background: #d1ecf1; padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary-violet);">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="mandat-creation" name="mandat-creation" value="accepte">
+                                            <label class="form-check-label" for="mandat-creation" style="font-weight: 600; cursor: pointer;">
+                                                <i class="bi bi-file-earmark-check-fill me-2" style="color: var(--primary-violet);"></i>
+                                                J'autorise LILIWATT à m'accompagner dans les démarches de création de mon statut d'indépendant
+                                            </label>
+                                            <small class="d-block mt-2 text-muted">
+                                                En cochant cette case, vous nous mandatez pour vous guider dans la création de votre statut (micro-entreprise, auto-entrepreneur, etc.)
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documents à joindre -->
+                                <div class="col-12 mt-5 mb-3">
+                                    <h4 style="color: var(--primary-dark); border-bottom: 2px solid var(--primary-violet); padding-bottom: 10px;">
+                                        <i class="bi bi-folder-fill me-2"></i>Vos documents *
+                                    </h4>
+                                    <p class="text-muted mt-2" style="font-size: 0.95rem;">
+                                        <i class="bi bi-exclamation-triangle-fill me-2"></i>Documents obligatoires pour la préparation de votre contrat
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="piece-identite-recto" class="form-label">
+                                        <i class="bi bi-person-badge-fill me-2"></i>Pièce d'identité - Recto *
+                                    </label>
+                                    <input type="file" class="form-control" id="piece-identite-recto" name="piece-identite-recto"
+                                           accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <small class="text-muted">Format accepté : PDF, JPG, PNG</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="piece-identite-verso" class="form-label">
+                                        <i class="bi bi-person-badge me-2"></i>Pièce d'identité - Verso
+                                    </label>
+                                    <input type="file" class="form-control" id="piece-identite-verso" name="piece-identite-verso"
+                                           accept=".pdf,.jpg,.jpeg,.png">
+                                    <small class="text-muted">Requis pour carte d'identité (facultatif pour passeport)</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="justificatif-domicile" class="form-label">
+                                        <i class="bi bi-house-fill me-2"></i>Justificatif de domicile *
+                                    </label>
+                                    <input type="file" class="form-control" id="justificatif-domicile" name="justificatif-domicile"
+                                           accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <small class="text-muted">Moins de 3 mois</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="rib" class="form-label">
+                                        <i class="bi bi-bank me-2"></i>RIB *
+                                    </label>
+                                    <input type="file" class="form-control" id="rib" name="rib"
+                                           accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <small class="text-muted">Relevé d'identité bancaire</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="autre-document" class="form-label">
+                                        <i class="bi bi-file-earmark-fill me-2"></i>Autre document
+                                    </label>
+                                    <input type="file" class="form-control" id="autre-document" name="autre-document"
+                                           accept=".pdf,.jpg,.jpeg,.png">
+                                    <small class="text-muted">CV, attestation, etc.</small>
+                                </div>
+
+                                <!-- RGPD -->
+                                <div class="col-12 mt-4">
+                                    <div class="alert alert-info" style="border-left: 4px solid var(--primary-dark);">
+                                        <i class="bi bi-info-circle-fill me-2"></i>
+                                        <strong>Important :</strong> Une fois votre candidature validée et vos documents reçus, nous vous contactons pour finaliser la préparation du contrat et lancer votre accès à la formation.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rgpd" required>
+                                        <label class="form-check-label" for="rgpd" style="font-size: 0.9rem; color: #666;">
+                                            En envoyant ce formulaire, vous acceptez d'être recontacté par LILIWATT dans le cadre du recrutement. Vos données restent confidentielles.
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Bouton d'envoi unique -->
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn btn-primary-custom btn-lg">
+                                        <i class="bi bi-send-fill me-2"></i>Envoyer mes documents
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span id="upload-docs"></span>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <span style="font-size:32px;font-weight:800;color:#fff;letter-spacing:4px;display:block;margin-bottom:20px;">LILIWATT</span>
+                    <p style="opacity: 0.8;">
+                        LILIWATT — Courtage Énergie B2B & B2C<br>59 rue de Ponthieu, Bureau 326 — 75008 Paris<br>
+                        Accompagnement des professionnels dans l'optimisation de leurs contrats d'énergie.
+                    </p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Navigation rapide</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#mission"><i class="bi bi-arrow-right me-2"></i>Mission</a></li>
+                        <li class="mb-2"><a href="#process"><i class="bi bi-arrow-right me-2"></i>Process</a></li>
+                        <li class="mb-2"><a href="#remuneration"><i class="bi bi-arrow-right me-2"></i>Rémunération</a></li>
+                        <li class="mb-2"><a href="#faq"><i class="bi bi-arrow-right me-2"></i>FAQ</a></li>
+                        <li class="mb-2"><a href="#form-candidature"><i class="bi bi-arrow-right me-2"></i>Déposer mes documents</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Contact</h5>
+                    <p style="opacity: 0.8;">
+                        <i class="bi bi-envelope-fill me-2"></i>recrutement@liliwatt.fr<br>
+                        <i class="bi bi-telephone-fill me-2"></i>Nous vous recontactons rapidement
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 30px 0 20px;">
+            <div class="text-center" style="opacity: 0.7;">
+                <p class="mb-0">© 2025 LILIWATT - Tous droits réservés | <a href="mentions-legales.html" style="color: white;">Mentions légales & Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Gestion des checkboxes de disponibilité
+        const touteSemaine = document.getElementById('dispo-semaine');
+        const joursIndividuels = document.querySelectorAll('input[name="disponibilite[]"]:not(#dispo-semaine)');
+        const formulaire = document.querySelector('form[name="candidature-liliwatt"]');
+
+        // Quand on coche "Toute la semaine"
+        if (touteSemaine) {
+            touteSemaine.addEventListener('change', function() {
+                if (this.checked) {
+                    joursIndividuels.forEach(jour => {
+                        jour.checked = true;
+                    });
+                }
+            });
+
+            // Quand on décoche un jour individuel, décocher "Toute la semaine"
+            joursIndividuels.forEach(jour => {
+                jour.addEventListener('change', function() {
+                    if (!this.checked) {
+                        touteSemaine.checked = false;
+                    } else {
+                        // Si tous les jours sont cochés, cocher "Toute la semaine"
+                        const tousCochés = Array.from(joursIndividuels).every(j => j.checked);
+                        if (tousCochés) {
+                            touteSemaine.checked = true;
+                        }
+                    }
+                });
+            });
+        }
+
+        // Validation : au moins une disponibilité doit être cochée
+        if (formulaire) {
+            formulaire.addEventListener('submit', function(e) {
+                const toutesDispos = document.querySelectorAll('input[name="disponibilite[]"]');
+                const auMoinsUneCochée = Array.from(toutesDispos).some(d => d.checked);
+
+                if (!auMoinsUneCochée) {
+                    e.preventDefault();
+                    alert('Veuillez sélectionner au moins un jour de disponibilité.');
+                    document.querySelector('input[name="disponibilite[]"]').focus();
+                    return false;
+                }
+            });
+        }
+
+        // Gestion des questions conditionnelles sur le statut d'indépendant
+        const statutOui = document.getElementById('statut-oui');
+        const statutNon = document.getElementById('statut-non');
+        const kbisSection = document.getElementById('kbis-section');
+        const kbisDocument = document.getElementById('kbis-document');
+        const accompagnementSection = document.getElementById('accompagnement-section');
+        const accompagnementOui = document.getElementById('accompagnement-oui');
+        const accompagnementNon = document.getElementById('accompagnement-non');
+        const mandatSection = document.getElementById('mandat-section');
+
+        // Afficher/masquer les sections selon le statut
+        if (statutOui && statutNon) {
+            statutOui.addEventListener('change', function() {
+                if (this.checked) {
+                    // A déjà un statut → afficher upload KBIS
+                    if (kbisSection) {
+                        kbisSection.style.display = 'block';
+                        if (kbisDocument) kbisDocument.required = true;
+                    }
+                    // Masquer accompagnement
+                    if (accompagnementSection) accompagnementSection.style.display = 'none';
+                    if (mandatSection) mandatSection.style.display = 'none';
+                    // Réinitialiser les choix
+                    if (accompagnementOui) accompagnementOui.checked = false;
+                    if (accompagnementNon) accompagnementNon.checked = false;
+                    if (document.getElementById('mandat-creation')) {
+                        document.getElementById('mandat-creation').checked = false;
+                    }
+                }
+            });
+
+            statutNon.addEventListener('change', function() {
+                if (this.checked) {
+                    // N'a pas de statut → masquer KBIS, afficher accompagnement
+                    if (kbisSection) {
+                        kbisSection.style.display = 'none';
+                        if (kbisDocument) kbisDocument.required = false;
+                    }
+                    if (accompagnementSection) accompagnementSection.style.display = 'block';
+                }
+            });
+        }
+
+        // Afficher/masquer la section mandat selon le choix d'accompagnement
+        if (accompagnementOui && accompagnementNon && mandatSection) {
+            accompagnementOui.addEventListener('change', function() {
+                if (this.checked) {
+                    mandatSection.style.display = 'block';
+                } else {
+                    mandatSection.style.display = 'none';
+                }
+            });
+
+            accompagnementNon.addEventListener('change', function() {
+                if (this.checked) {
+                    mandatSection.style.display = 'none';
+                    if (document.getElementById('mandat-creation')) {
+                        document.getElementById('mandat-creation').checked = false;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
