@@ -948,19 +948,7 @@
                             <h2 class="section-title">Dépôt de documents</h2>
                             <p class="mt-3" style="color: #666;">Remplissez le formulaire ci-dessous et déposez vos documents</p>
                         </div>
-                        <form name="candidature-liliwatt"
-                              method="POST"
-                              data-netlify="true"
-                              data-netlify-honeypot="bot-field"
-                              action="/merci.html"
-                              enctype="multipart/form-data">
-
-                            <!-- Champ caché requis pour Netlify Forms -->
-                            <input type="hidden" name="form-name" value="candidature-liliwatt" />
-
-                            <!-- Honeypot anti-spam (champ caché invisible) -->
-                            <p style="display: none;">
-                                <label>Ne pas remplir : <input name="bot-field" /></label>
+                        <form method="POST" action="/api/candidature" enctype="multipart/form-data">
                             </p>
 
                             <div class="row g-3">
@@ -1261,7 +1249,7 @@
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 30px 0 20px;">
             <div class="text-center" style="opacity: 0.7;">
-                <p class="mb-0">© 2025 LILIWATT - Tous droits réservés | <a href="mentions-legales.html" style="color: white;">Mentions légales & Politique de confidentialité</a></p>
+                <p class="mb-0">© 2025 LILIWATT - Tous droits réservés | <a href="/mentions-legales" style="color: white;">Mentions légales & Politique de confidentialité</a></p>
             </div>
         </div>
     </footer>

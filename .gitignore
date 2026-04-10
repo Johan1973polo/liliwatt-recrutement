@@ -2,9 +2,13 @@
 .DS_Store
 Thumbs.db
 
-# Fichiers Netlify locaux
+# Node
+node_modules/
+.env
+
+# Netlify
 .netlify/
 
-# Fichiers de backup
+# Backup
 *.bak
 *~
