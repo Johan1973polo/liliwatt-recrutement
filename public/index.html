@@ -979,6 +979,11 @@
                                     <input type="text" class="form-control" id="ville" name="ville" required>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="siren" class="form-label">SIREN <span style="color:#9ca3af;font-weight:400;">(optionnel)</span></label>
+                                    <input type="text" class="form-control" id="siren" name="siren" placeholder="Si vous en avez un">
+                                </div>
+                                <input type="hidden" name="qualite" value="Gérant">
+                                <div class="col-md-6">
                                     <label for="experience" class="form-label">Expérience en téléprospection *</label>
                                     <select class="form-select" id="experience" name="experience" required>
                                         <option value="">Sélectionnez...</option>
@@ -1072,68 +1077,21 @@
                                     </p>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">Êtes-vous déjà indépendant ou avez-vous un KBIS ? *</label>
-                                    <div class="form-check mb-2" style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
-                                        <input class="form-check-input" type="radio" name="statut-independant" id="statut-oui" value="oui" required>
-                                        <label class="form-check-label" for="statut-oui" style="cursor: pointer;">
-                                            <i class="bi bi-check-circle-fill me-2" style="color: var(--primary-violet);"></i>Oui, j'ai déjà un statut d'indépendant
-                                        </label>
-                                    </div>
-                                    <div class="form-check" style="padding: 15px; background: #f8f9fa; border-radius: 10px;">
-                                        <input class="form-check-input" type="radio" name="statut-independant" id="statut-non" value="non" required>
-                                        <label class="form-check-label" for="statut-non" style="cursor: pointer;">
-                                            <i class="bi bi-x-circle-fill me-2" style="color: #dc3545;"></i>Non, je n'ai pas encore de statut d'indépendant
-                                        </label>
+                                    <div style="background:#fef3c7;padding:20px;border-radius:10px;border-left:4px solid #f59e0b;">
+                                        <p style="margin:0;color:#92400e;font-size:0.95rem;">
+                                            <i class="bi bi-exclamation-triangle-fill me-2"></i><strong>Ce poste est réservé aux travailleurs indépendants.</strong>
+                                            Si vous n'avez pas encore de statut, vous devrez en créer un avant de démarrer.
+                                            Vous pouvez déposer dès maintenant vos documents disponibles.
+                                        </p>
                                     </div>
                                 </div>
 
-                                <!-- Upload KBIS si déjà indépendant -->
-                                <div class="col-12 mt-3" id="kbis-section" style="display: none;">
-                                    <div style="background: #e8f5f1; padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary-violet);">
-                                        <label for="kbis-document" class="form-label" style="font-weight: 600;">
-                                            <i class="bi bi-file-earmark-text-fill me-2" style="color: var(--primary-violet);"></i>KBIS ou attestation URSSAF *
-                                        </label>
-                                        <input type="file" class="form-control" id="kbis-document" name="kbis-document"
-                                               accept=".pdf,.jpg,.jpeg,.png">
-                                        <small class="text-muted">Merci de joindre votre KBIS, extrait K ou attestation URSSAF</small>
-                                    </div>
-                                </div>
-
-                                <!-- Question conditionnelle : accompagnement -->
-                                <div class="col-12 mt-3" id="accompagnement-section" style="display: none;">
-                                    <div style="background: #fff3cd; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107;">
-                                        <label class="form-label" style="color: #856404;">
-                                            <i class="bi bi-question-circle-fill me-2"></i>Souhaitez-vous être accompagné par <strong style="color:#7c3aed;font-weight:700;">LILIWATT</strong> pour la création de votre statut d'indépendant ?
-                                        </label>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input" type="radio" name="accompagnement" id="accompagnement-oui" value="oui">
-                                            <label class="form-check-label" for="accompagnement-oui" style="cursor: pointer;">
-                                                Oui, je souhaite être accompagné
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="accompagnement" id="accompagnement-non" value="non">
-                                            <label class="form-check-label" for="accompagnement-non" style="cursor: pointer;">
-                                                Non, je m'en occupe moi-même
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Mandat pour accompagnement -->
-                                <div class="col-12 mt-3" id="mandat-section" style="display: none;">
-                                    <div style="background: #d1ecf1; padding: 20px; border-radius: 10px; border-left: 4px solid var(--primary-violet);">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="mandat-creation" name="mandat-creation" value="accepte">
-                                            <label class="form-check-label" for="mandat-creation" style="font-weight: 600; cursor: pointer;">
-                                                <i class="bi bi-file-earmark-check-fill me-2" style="color: var(--primary-violet);"></i>
-                                                J'autorise <strong style="color:#7c3aed;font-weight:700;">LILIWATT</strong> à m'accompagner dans les démarches de création de mon statut d'indépendant
-                                            </label>
-                                            <small class="d-block mt-2 text-muted">
-                                                En cochant cette case, vous nous mandatez pour vous guider dans la création de votre statut (micro-entreprise, auto-entrepreneur, etc.)
-                                            </small>
-                                        </div>
-                                    </div>
+                                <!-- Upload KBIS optionnel -->
+                                <div class="col-md-6 mt-3">
+                                    <label for="kbis-document" class="form-label" style="font-weight:600;">
+                                        <i class="bi bi-file-earmark-text-fill me-2" style="color:var(--primary-violet);"></i>KBIS ou attestation URSSAF <span style="color:#9ca3af;font-weight:400;">(si disponible)</span>
+                                    </label>
+                                    <input type="file" class="form-control" id="kbis-document" name="kbis-document" accept=".pdf,.jpg,.jpeg,.png">
                                 </div>
 
                                 <!-- Documents à joindre -->
@@ -1160,14 +1118,6 @@
                                     <input type="file" class="form-control" id="piece-identite-verso" name="piece-identite-verso"
                                            accept=".pdf,.jpg,.jpeg,.png">
                                     <small class="text-muted">Requis pour carte d'identité (facultatif pour passeport)</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="justificatif-domicile" class="form-label">
-                                        <i class="bi bi-house-fill me-2"></i>Justificatif de domicile *
-                                    </label>
-                                    <input type="file" class="form-control" id="justificatif-domicile" name="justificatif-domicile"
-                                           accept=".pdf,.jpg,.jpeg,.png" required>
-                                    <small class="text-muted">Moins de 3 mois</small>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="rib" class="form-label">
@@ -1319,68 +1269,7 @@
             });
         }
 
-        // Gestion des questions conditionnelles sur le statut d'indépendant
-        const statutOui = document.getElementById('statut-oui');
-        const statutNon = document.getElementById('statut-non');
-        const kbisSection = document.getElementById('kbis-section');
-        const kbisDocument = document.getElementById('kbis-document');
-        const accompagnementSection = document.getElementById('accompagnement-section');
-        const accompagnementOui = document.getElementById('accompagnement-oui');
-        const accompagnementNon = document.getElementById('accompagnement-non');
-        const mandatSection = document.getElementById('mandat-section');
-
-        // Afficher/masquer les sections selon le statut
-        if (statutOui && statutNon) {
-            statutOui.addEventListener('change', function() {
-                if (this.checked) {
-                    // A déjà un statut → afficher upload KBIS
-                    if (kbisSection) {
-                        kbisSection.style.display = 'block';
-                        if (kbisDocument) kbisDocument.required = true;
-                    }
-                    // Masquer accompagnement
-                    if (accompagnementSection) accompagnementSection.style.display = 'none';
-                    if (mandatSection) mandatSection.style.display = 'none';
-                    // Réinitialiser les choix
-                    if (accompagnementOui) accompagnementOui.checked = false;
-                    if (accompagnementNon) accompagnementNon.checked = false;
-                    if (document.getElementById('mandat-creation')) {
-                        document.getElementById('mandat-creation').checked = false;
-                    }
-                }
-            });
-
-            statutNon.addEventListener('change', function() {
-                if (this.checked) {
-                    // N'a pas de statut → masquer KBIS, afficher accompagnement
-                    if (kbisSection) {
-                        kbisSection.style.display = 'none';
-                        if (kbisDocument) kbisDocument.required = false;
-                    }
-                    if (accompagnementSection) accompagnementSection.style.display = 'block';
-                }
-            });
-        }
-
-        // Afficher/masquer la section mandat selon le choix d'accompagnement
-        if (accompagnementOui && accompagnementNon && mandatSection) {
-            accompagnementOui.addEventListener('change', function() {
-                if (this.checked) {
-                    mandatSection.style.display = 'block';
-                } else {
-                    mandatSection.style.display = 'none';
-                }
-            });
-
-            accompagnementNon.addEventListener('change', function() {
-                if (this.checked) {
-                    mandatSection.style.display = 'none';
-                    if (document.getElementById('mandat-creation')) {
-                        document.getElementById('mandat-creation').checked = false;
-                    }
-                }
-            });
-        }
+        // Statut indépendant simplifié (plus de sections conditionnelles)
     </script>
 </body>
 </html>

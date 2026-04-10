@@ -83,7 +83,6 @@ async function sendMail(to, subject, htmlBody) {
 const fileFields = [
   { name: 'piece-identite-recto', maxCount: 1 },
   { name: 'piece-identite-verso', maxCount: 1 },
-  { name: 'justificatif-domicile', maxCount: 1 },
   { name: 'rib', maxCount: 1 },
   { name: 'kbis-document', maxCount: 1 },
   { name: 'autre-document', maxCount: 1 }
@@ -92,6 +91,8 @@ const fileFields = [
 app.post('/api/candidature', upload.fields(fileFields), async (req, res) => {
   try {
     const { prenom, nom, email, telephone, ville, experience, motivations } = req.body;
+    const siren = req.body.siren?.trim() || 'SIREN EN COURS';
+    const qualite = req.body.qualite?.trim() || 'Gérant';
     const statutIndependant = req.body['statut-independant'] || '';
     const accompagnement = req.body['accompagnement'] || '';
     const disponibilites = req.body['disponibilite[]'] || req.body['disponibilite'] || '';
@@ -171,7 +172,7 @@ app.post('/api/candidature', upload.fields(fileFields), async (req, res) => {
         valueInputOption: 'RAW',
         requestBody: { values: [[
           nom.toUpperCase(), prenom, email, telephone,
-          req.body.siren || '', req.body.qualite || '',
+          siren, qualite,
           dateStr, driveLink, 'EN COURS', '', ''
         ]] }
       });
