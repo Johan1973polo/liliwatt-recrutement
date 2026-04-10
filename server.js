@@ -22,15 +22,16 @@ app.get('/merci', (req, res) => res.sendFile(path.join(__dirname, 'public', 'mer
 // ===== GOOGLE DRIVE =====
 const RECRUTEMENT_PARENT_ID = '1eQYZqexJ67EcVPe8rsmKDf6mtASf9yjA';
 
-function getDriveClient() {
-  let creds;
+function getDriveCreds() {
   if (process.env.GOOGLE_DRIVE_CREDS_BASE64) {
-    creds = JSON.parse(Buffer.from(process.env.GOOGLE_DRIVE_CREDS_BASE64, 'base64').toString());
-  } else {
-    creds = require('./liliwatt-drive-credentials.json');
+    return JSON.parse(Buffer.from(process.env.GOOGLE_DRIVE_CREDS_BASE64, 'base64').toString());
   }
+  return require('./liliwatt-drive-credentials.json');
+}
+
+function getDriveClient() {
   const auth = new google.auth.GoogleAuth({
-    credentials: creds,
+    credentials: getDriveCreds(),
     scopes: ['https://www.googleapis.com/auth/drive']
   });
   return google.drive({ version: 'v3', auth });
@@ -151,11 +152,59 @@ app.post('/api/candidature', upload.fields(fileFields), async (req, res) => {
     try {
       await sendMail('recrutement@liliwatt.fr', `📋 Nouvelle candidature — ${prenom} ${nom}`, mailHtml);
     } catch(mailErr) {
-      console.error('⚠️ Erreur mail:', mailErr.message);
+      console.error('⚠️ Erreur mail notification:', mailErr.message);
     }
 
-    // 4. Rediriger vers merci
-    res.redirect('/merci');
+    // 4. Enregistrer dans Google Sheets
+    try {
+      const sheetsAuth = new google.auth.GoogleAuth({
+        credentials: getDriveCreds(),
+        scopes: ['https://www.googleapis.com/auth/spreadsheets']
+      });
+      const sheets = google.sheets({ version: 'v4', auth: sheetsAuth });
+      const SHEET_ID = process.env.RECRUTEMENT_SHEET_ID || '11A-aJIqtm0JZ01lU43GpWudWDNFtknIr-4sYgYD-6ck';
+      const dateStr = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      const driveLink = `https://drive.google.com/drive/folders/${candidatId}`;
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: SHEET_ID,
+        range: 'A:K',
+        valueInputOption: 'RAW',
+        requestBody: { values: [[
+          nom.toUpperCase(), prenom, email, telephone,
+          req.body.siren || '', req.body.qualite || '',
+          dateStr, driveLink, 'EN COURS', '', ''
+        ]] }
+      });
+      console.log(`📊 Sheets: ${prenom} ${nom} ajouté`);
+    } catch(sheetErr) {
+      console.error('⚠️ Erreur Sheets:', sheetErr.message);
+    }
+
+    // 5. Mail de confirmation au candidat
+    try {
+      const confirmHtml = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+<div style="background:linear-gradient(135deg,#1e1b4b,#7c3aed);padding:32px;border-radius:12px 12px 0 0;text-align:center;">
+<h1 style="color:#fff;font-size:28px;font-weight:800;letter-spacing:3px;margin:0;">LILIWATT</h1>
+<p style="color:rgba(255,255,255,.8);font-size:12px;margin:6px 0 0;text-transform:uppercase;letter-spacing:1px;">Courtage Énergie B2B & B2C</p>
+</div>
+<div style="background:#f5f3ff;padding:32px;border-radius:0 0 12px 12px;">
+<p style="font-size:16px;color:#1e1b4b;margin-bottom:24px;">Bonjour <strong>${prenom}</strong>,</p>
+<p style="color:#374151;line-height:1.7;">Nous avons bien reçu votre candidature. Notre équipe va étudier votre dossier et vous contactera très prochainement pour la suite du processus.</p>
+<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px;margin:24px 0;">
+<p style="margin:0;color:#16a34a;font-weight:600;">✅ Votre dossier est complet — ${uploadedFiles.length} document(s) reçu(s).</p>
+</div>
+<p style="color:#374151;line-height:1.7;">À très bientôt !</p>
+<p style="color:#6b7280;font-size:13px;margin-top:24px;">L'équipe LILIWATT<br>recrutement@liliwatt.fr</p>
+<hr style="border:1px solid #e9d5ff;margin:24px 0;">
+<p style="font-size:11px;color:#9ca3af;margin:0;">LILIWATT — LILISTRAT STRATÉGIE SAS<br>59 rue de Ponthieu, Bureau 326 — 75008 Paris</p>
+</div></div>`;
+      await sendMail(email, '✅ Candidature reçue — LILIWATT', confirmHtml);
+    } catch(confirmErr) {
+      console.error('⚠️ Erreur mail confirmation:', confirmErr.message);
+    }
+
+    // 6. Rediriger vers merci avec le prénom
+    res.redirect('/merci?prenom=' + encodeURIComponent(prenom));
 
   } catch (err) {
     console.error('❌ Erreur candidature:', err.message, err.stack);
